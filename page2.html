@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Web Programming Portfolio - CSS &amp; Forms Tasks</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+
+  <nav class="navbar navbar-expand-lg sticky-top">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">&lt;<span>IK</span>/&gt; Portfolio</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav"><span class="navbar-toggler-icon"></span></button>
+      <div class="collapse navbar-collapse" id="nav">
+        <ul class="navbar-nav ms-auto align-items-lg-center">
+          <li class="nav-item"><a class="nav-link" href="index.html">HTML Tasks</a></li>
+          <li class="nav-item"><a class="nav-link active" href="page2.html">CSS &amp; Forms</a></li>
+          <li class="nav-item"><a class="nav-link" href="page3.html">JavaScript</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Jump To</a>
+            <ul class="dropdown-menu dropdown-menu-end">
+              <li><a class="dropdown-item" href="#html-css">&#127912; HTML CSS (15–20)</a></li>
+              <li><a class="dropdown-item" href="#css-external">&#128279; CSS External (21–23)</a></li>
+              <li><a class="dropdown-item" href="#github">&#128025; GitHub (24)</a></li>
+              <li><a class="dropdown-item" href="#html-forms">&#128203; HTML Forms (25–27)</a></li>
+              <li><hr style="border-color:rgba(255,255,255,0.06);margin:4px 0"></li>
+              <li><a class="dropdown-item" href="index.html">&#128196; HTML Tasks (1–14)</a></li>
+              <li><a class="dropdown-item" href="page3.html">&#9889; JavaScript (28–45)</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <style>
+    .sub-hero {
+      min-height: 52vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background: #0d0d1a;
+      position: relative;
+      overflow: hidden;
+      padding: 100px 20px 60px;
+    }
+    .sub-hero::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 70px;
+      background: linear-gradient(to top, #0f0f1a, transparent);
+      z-index: 1;
+      pointer-events: none;
+    }
+    .sub-hero .sh-content { position: relative; z-index: 2; }
+    .sh-blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.12;
+      z-index: 0;
+      animation: blobF 8s ease-in-out infinite alternate;
+    }
+    @keyframes blobF {
+      from { transform: translate(0,0) scale(1); }
+      to   { transform: translate(20px,15px) scale(1.08); }
+    }
+    .sh-tag {
+      display: inline-block;
+      background: rgba(38,77,228,0.15);
+      border: 1px solid rgba(38,77,228,0.3);
+      color: #7c9af5;
+      font-size: 0.7rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      font-weight: 600;
+      padding: 5px 16px;
+      border-radius: 20px;
+      margin-bottom: 1rem;
+      animation: fadeUp 0.7s cubic-bezier(0.22,1,0.36,1) both;
+    }
+    .sh-title {
+      font-size: clamp(1.8rem, 5vw, 3.2rem);
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: -0.5px;
+      line-height: 1.1;
+      margin-bottom: 0.5rem;
+      animation: fadeUp 0.8s cubic-bezier(0.22,1,0.36,1) 0.1s both;
+    }
+    .sh-title .acc2 { color: #264de4; }
+    .sh-byline {
+      color: #888;
+      font-size: 0.92rem;
+      margin-bottom: 1.6rem;
+      animation: fadeUp 0.8s cubic-bezier(0.22,1,0.36,1) 0.2s both;
+    }
+    .sh-chips {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+      animation: fadeUp 0.8s cubic-bezier(0.22,1,0.36,1) 0.3s both;
+      margin-bottom: 1.2rem;
+    }
+    .sh-chip {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 10px;
+      padding: 8px 18px;
+      text-align: center;
+      font-size: 0.78rem;
+    }
+    .sh-chip strong { display: block; font-size: 1.2rem; color: #fff; }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+
+  <!-- Page 2 Hero -->
+  <section class="sub-hero">
+    <div class="sh-blob" style="width:350px;height:350px;background:#264de4;top:-80px;left:-80px;animation-delay:0s"></div>
+    <div class="sh-blob" style="width:250px;height:250px;background:#7c6fe0;bottom:-60px;right:-60px;animation-delay:3s"></div>
+    <div class="sh-blob" style="width:180px;height:180px;background:#11998e;top:40%;right:12%;animation-delay:6s"></div>
+    <div class="sh-content">
+      <div class="sh-tag">&#127912; CSS &amp; Forms</div>
+      <h1 class="sh-title" id="typewriter-title"
+          data-tw='[{"t":"CSS ","c":""},{"t":"&amp; Forms","c":"acc2"},{"t":"\nTasks","c":""}]'>
+        CSS <span class="acc2">&amp; Forms</span><br>Tasks
+      </h1>
+      <p class="sh-byline">Tasks 15&ndash;27 &mdash; HTML CSS, External Stylesheets, GitHub Hosting &amp; Forms</p>
+      <div class="sh-chips">
+        <div class="sh-chip"><strong>6</strong>CSS Tasks</div>
+        <div class="sh-chip"><strong>3</strong>External CSS</div>
+        <div class="sh-chip"><strong>1</strong>GitHub Pages</div>
+        <div class="sh-chip"><strong>3</strong>HTML Forms</div>
+      </div>
+      <a href="page3.html" style="display:inline-flex;align-items:center;gap:6px;background:rgba(38,77,228,0.15);border:1px solid rgba(38,77,228,0.4);color:#7c9af5;font-weight:600;font-size:0.85rem;padding:10px 22px;border-radius:50px;text-decoration:none;transition:all 0.3s ease" onmouseover="this.style.background='rgba(38,77,228,0.3)';this.style.color='#fff'" onmouseout="this.style.background='rgba(38,77,228,0.15)';this.style.color='#7c9af5'">&#9889; Next: JavaScript Tasks &rarr;</a>
+    </div>
+  </section>
+
+  <div class="container">
+
+    <h2 class="section-heading" id="html-css">&#127912; HTML CSS Practice</h2>
+    <div class="row g-4 mb-4">
+
+      <div class="col-md-6">
+        <div class="task-card card">
+          <div class="card-header d-flex align-items-center justify-content-between">
+            <span><span class="task-num css-bg">15</span>Student Profiles Table</span>
+            <span class="badge-done">Completed</span>
+          </div>
+          <div class="card-body">
+            <p>Student details displayed in a styled table with CSS borders, colors, and hover effects.</p>
+            <div class="demo-box">
+              <table class="demo-table">
+                <tr><th>Photo</th><th>Name</th><th>Branch</th><th>GPA</th></tr>
+                <tr style="cursor:pointer"><td>👤</td><td>Ishaan K.</td><td>CSE</td><td>9.2</td></tr>
+                <tr style="cursor:pointer"><td>👤</td><td>Neha S.</td><td>ECE</td><td>9.0</td></tr>
+                <tr style="cursor:pointer"><td>👤</td><td>Rohit M.</td><td>IT</td><td>8.8</td></tr>
+              </table>
+              <small class="text-muted">*Rows highlight on hover with CSS</small>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="task-card card">
+          <div class="card-header d-flex align-items-center justify-content-between">
+            <span><span class="task-num css-bg">16</span>Product Catalog</span>
+            <span class="badge-done">Completed</span>
+          </div>
+          <div class="card-body">
+            <p>Product catalog using HTML table with images, descriptions, prices and CSS styling.</p>
+            <div class="demo-box">
+              <div class="row g-2">
+                <div class="col-4 text-center">
+                  <div style="background:#eee;padding:10px;border-radius:8px">
+                    <div style="font-size:1.8rem">👟</div>
+                    <small><strong>Sneakers</strong><br>Rs.2,999</small>
+                  </div>
+                </div>
+                <div class="col-4 text-center">
+                  <div style="background:#eee;padding:10px;border-radius:8px">
+                    <div style="font-size:1.8rem">⌚</div>
+                    <small><strong>Watch</strong><br>Rs.5,499</small>
+                  </div>
+                </div>
+                <div class="col-4 text-center">
+                  <div style="background:#eee;padding:10px;border-radius:8px">
+                    <div style="font-size:1.8rem">🎧</div>
+                    <small><strong>Headphones</strong><br>Rs.3,999</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="task-card card">
+          <div class="card-header d-flex align-items-center justify-content-between">
+            <span><span class="task-num css-bg">17</span>Simple Dashboard</span>
+            <span class="badge-done">Completed</span>
+          </div>
+          <div class="card-body">
+            <p>Dashboard page with stat widgets displaying numbers in styled cards.</p>
+            <div class="demo-box">
+              <div class="row g-2 text-center">
+                <div class="col-4"><div style="background:#d4edda;padding:10px;border-radius:8px"><strong style="font-size:1.3rem">1,248</strong><br><small>Users</small></div></div>
+                <div class="col-4"><div style="background:#cce5ff;padding:10px;border-radius:8px"><strong style="font-size:1.3rem">Rs.85K</strong><br><small>Revenue</small></div></div>
+                <div class="col-4"><div style="background:#f8d7da;padding:10px;border-radius:8px"><strong style="font-size:1.3rem">342</strong><br><small>Orders</small></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="task-card card">
+          <div class="card-header d-flex align-items-center justify-content-between">
+            <span><span class="task-num css-bg">18</span>Container Max-Width</span>
+            <span class="badge-done">Completed</span>
+          </div>
+          <div class="card-body">
+            <p>Page with a .container div having max-width of 1200px, centered with auto margins.</p>
+            <div class="demo-box">
+              <div style="max-width:100%;margin:0 auto;border:2px dashed #4e54c8;padding:10px;text-align:center;font-size:0.8rem">
+                <code>.container { max-width: 1200px; margin: 0 auto; padding: 20px; }</code>
+                <br>This div is centered with max-width applied.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="task-card card">
+          <div class="card-header d-flex align-items-center justify-content-between">
+            <span><span class="task-num css-bg">19</span>3 Wrapped Sections</span>
+            <span class="badge-done">Completed</span>
+          </div>
+          <div class="card-body">
+            <p>Three content sections wrapped inside a .container class with individual styling.</p>
+            <div class="demo-box">
+              <div style="border:2px dashed #aaa;padding:6px">
+                <div style="background:#d4edda;padding:6px;margin-bottom:4px;border-radius:4px;font-size:0.8rem;text-align:center">Section 1: Introduction</div>
+                <div style="background:#fff3cd;padding:6px;margin-bottom:4px;border-radius:4px;font-size:0.8rem;text-align:center">Section 2: Features</div>
+                <div style="background:#cce5ff;padding:6px;border-radius:4px;font-size:0.8rem;text-align:center">Section 3: Pricing</div>
+              </div>
+              <small class="text-muted">All wrapped in .container div</small>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="task-card card">
+          <div class="card-header d-flex align-items-center justify-content-between">
+            <span><span class="task-num css-bg">20</span>Login &amp; Registration</span>
+            <span class="badge-done">Completed</span>
+          </div>
+          <div class="card-body">
+            <p>Centered login form with styled inputs, submit button, and registration link.</p>
+            <div class="demo-box">
+              <div style="max-width:220px;margin:0 auto;text-align:center">
+                <strong>Login</strong>
+                <input class="form-control form-control-sm mt-2" placeholder="Email" readonly>
+                <input class="form-control form-control-sm mt-1" type="password" placeholder="Password" readonly>
+                <div class="d-flex justify-content-between mt-1" style="font-size:0.7rem">
+                  <label><input type="checkbox"> Remember</label>
+                  <a href="#" style="color:#4e54c8">Forgot?</a>
+                </div>
+                <button class="btn btn-primary btn-sm w-100 mt-2">Sign In</button>
+                <small class="text-muted">New user? <a href="#">Register</a></small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h2 class="section-heading" id="css-external">&#128279; CSS — External Style Sheet</h2>
+    <div class="row g-4 mb-4">
+
+      <div class="col-md-6 col-lg-4">
+        <div class="task-card card">
+          <div class="card-header d-flex align-items-center justify-content-between">
+            <span><span class="task-num css-bg">21</span>Course Details Page</span>
+            <span class="badge-done">Completed</span>
+          </div>
+          <div class="card-body">
+            <p>College course details page styled with an external CSS file linked via &lt;link&gt; tag.</p>
+            <div class="demo-box" style="font-size:0.8rem">
+              <code>&lt;link rel="stylesheet" href="styles.css"&gt;</code>
+              <br>External CSS used for fonts, colors, spacing, and responsive layout.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4">
+        <div class="task-card card">
+          <div class="card-header d-flex align-items-center justify-content-between">
+            <span><span class="task-num css-bg">22</span>Product Page</span>
+            <span class="badge-done">Completed</span>
+          </div>
+          <div class="card-body">
+            <p>Online store product page with external CSS for layout, typography, and styling.</p>
+            <div class="demo-box" style="font-size:0.8rem">
+              Product cards styled with external stylesheet including hover effects, shadows, and grid layout.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4">
+        <div class="task-card card">
+          <div class="card-header d-flex align-items-center justify-content-between">
+            <span><span class="task-num css-bg">23</span>Responsive Contact Form</span>
+            <span class="badge-done">Completed</span>
+          </div>
+          <div class="card-body">
+            <p>Contact form using HTML with external CSS file for responsive sizing and styling.</p>
+            <div class="demo-box" style="font-size:0.8rem">
+              Form uses media queries in external CSS to stack fields on mobile and go side-by-side on desktop.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h2 class="section-heading" style="border-color:#11998e">GitHub Hosting Practice</h2>
+    <div class="row g-4 mb-4">
+      <div class="col-md-8 col-lg-6">
+        <div class="task-card card">
+          <div class="card-header d-flex align-items-center justify-content-between">
+            <span><span class="task-num css-bg">24</span>GitHub Pages Portfolio</span>
+            <span class="badge-done">Completed</span>
+          </div>
+          <div class="card-body">
+            <p>Personal portfolio website developed and hosted live on GitHub Pages.</p>
+            <div class="demo-box">
+              <strong>Steps:</strong>
+              <ol style="font-size:0.82rem;padding-left:18px;margin:5px 0 0">
+                <li>Created GitHub repository</li>
+                <li>Added HTML, CSS, JS files</li>
+                <li>Enabled GitHub Pages in Settings</li>
+                <li>Site deployed at username.github.io</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h2 class="section-heading" id="html-forms">&#128203; HTML Forms Practice</h2>
+    <div class="row g-4 mb-4">
+
+      <div class="col-md-6 col-lg-4">
+        <div class="task-card card">
+          <div class="card-header d-flex align-items-center justify-content-between">
+            <span><span class="task-num css-bg">25</span>Login Form</span>
+            <span class="badge-done">Completed</span>
+          </div>
+          <div class="card-body">
+            <p>Login form with username/email, password, remember me checkbox, and submit button.</p>
+            <div class="demo-box">
+              <input class="form-control form-control-sm mb-1" placeholder="Username or Email" readonly>
+              <input class="form-control form-control-sm mb-1" type="password" placeholder="Password" readonly>
+              <label style="font-size:0.75rem"><input type="checkbox"> Remember me</label>
+              <button class="btn btn-primary btn-sm w-100 mt-1">Login</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="col-md-6 col-lg-4">
+        <div class="task-card card">
+          <div class="card-header d-flex align-items-center justify-content-between">
+            <span><span class="task-num css-bg">26</span>Registration Form</span>
+            <span class="badge-done">Completed</span>
+          </div>
+          <div class="card-body">
+            <p>Registration with first name, last name, email, phone, password, and gender selection.</p>
+            <div class="demo-box">
+              <div class="row g-1 mb-1">
+                <div class="col-6"><input class="form-control form-control-sm" placeholder="First Name" readonly></div>
+                <div class="col-6"><input class="form-control form-control-sm" placeholder="Last Name" readonly></div>
+              </div>
+              <input class="form-control form-control-sm mb-1" placeholder="Email" readonly>
+              <input class="form-control form-control-sm mb-1" placeholder="Phone" readonly>
+              <div style="font-size:0.72rem"><label class="me-2"><input type="radio" name="g"> Male</label><label class="me-2"><input type="radio" name="g"> Female</label></div>
+              <button class="btn btn-success btn-sm w-100 mt-1">Register</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4">
+        <div class="task-card card">
+          <div class="card-header d-flex align-items-center justify-content-between">
+            <span><span class="task-num css-bg">27</span>Contact Form</span>
+            <span class="badge-done">Completed</span>
+          </div>
+          <div class="card-body">
+            <p>Contact form with full name, email, subject dropdown, and message textarea.</p>
+            <div class="demo-box">
+              <input class="form-control form-control-sm mb-1" placeholder="Full Name" readonly>
+              <input class="form-control form-control-sm mb-1" placeholder="Email" readonly>
+              <select class="form-select form-select-sm mb-1" disabled>
+                <option>Select Subject</option>
+                <option>General</option>
+                <option>Support</option>
+              </select>
+              <textarea class="form-control form-control-sm mb-1" rows="2" placeholder="Your message..." readonly></textarea>
+              <button class="btn btn-primary btn-sm w-100">Send Message</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="d-flex justify-content-between align-items-center my-5">
+      <a href="index.html" class="page-nav-btn">&larr; HTML Tasks (1–14)</a>
+      <a href="page3.html" class="page-nav-btn next">JavaScript Tasks (28–45) &rarr;</a>
+    </div>
+
+  </div>
+
+  <footer>
+    <div class="container">
+      <div>&lt;<span style="color:#7c6fe0">IK</span>/&gt; <strong style="color:#ccc">Ishaan Kapil</strong> &mdash; 3rd Year CSE student&mdash; Web Programming &mdash; 2025</div>
+      <div class="footer-links">
+        <a href="index.html">&#128196; HTML Tasks</a>
+        <a href="page2.html">&#127912; CSS &amp; Forms</a>
+        <a href="page3.html">&#9889; JavaScript</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
+
+

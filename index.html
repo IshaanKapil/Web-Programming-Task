@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Web Programming Portfolio – Ishaan Kapil</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+  <style>
+    
+    body { overflow-x: hidden; }
+
+    #particles { position:absolute; inset:0; z-index:0; pointer-events:none; }
+
+    .home-hero {
+      min-height: 92vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: #0d0d1a;
+      position: relative;
+      overflow: hidden;
+      padding: 80px 20px 40px;
+      text-align: center;
+    }
+    .home-hero::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 80px;
+      background: linear-gradient(to top, #0f0f1a, transparent);
+      z-index: 1;
+      pointer-events: none;
+    }
+    .hero-content { position: relative; z-index: 2; }
+
+    .blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.12;
+      z-index: 0;
+      animation: blobFloat 8s ease-in-out infinite alternate;
+    }
+    .blob-1 { width:400px;height:400px; background:#7c6fe0; top:-100px; left:-100px; animation-delay:0s; }
+    .blob-2 { width:300px;height:300px; background:#4e54c8; bottom:-80px; right:-80px; animation-delay:2s; }
+    .blob-3 { width:200px;height:200px; background:#a89df5; top:30%; right:10%; animation-delay:4s; }
+    @keyframes blobFloat {
+      from { transform: translate(0, 0) scale(1); }
+      to   { transform: translate(30px, 20px) scale(1.08); }
+    }
+
+    .hero-tag {
+      display: inline-block;
+      background: rgba(124,111,224,0.15);
+      border: 1px solid rgba(124,111,224,0.3);
+      color: #a89df5;
+      font-size: 0.72rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      font-weight: 600;
+      padding: 5px 16px;
+      border-radius: 20px;
+      margin-bottom: 1.2rem;
+      animation: fadeUp 0.7s cubic-bezier(0.22,1,0.36,1) both;
+    }
+    .hero-title {
+      font-size: clamp(2rem, 6vw, 3.8rem);
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: -1px;
+      line-height: 1.1;
+      margin-bottom: 0.6rem;
+      animation: fadeUp 0.8s cubic-bezier(0.22,1,0.36,1) 0.1s both;
+    }
+    .hero-title .accent { color: #7c6fe0; }
+    .hero-byline {
+      color: #888;
+      font-size: 1.05rem;
+      margin-bottom: 0.3rem;
+      animation: fadeUp 0.8s cubic-bezier(0.22,1,0.36,1) 0.2s both;
+    }
+    .hero-byline strong { color: #bbb; }
+    .hero-sub {
+      color: #666;
+      font-size: 0.85rem;
+      margin-bottom: 2.5rem;
+      animation: fadeUp 0.8s cubic-bezier(0.22,1,0.36,1) 0.3s both;
+    }
+
+    .cat-cards {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+      position: relative;
+      z-index: 2;
+      animation: fadeUp 0.9s cubic-bezier(0.22,1,0.36,1) 0.4s both;
+    }
+    .cat-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 18px;
+      padding: 36px 28px;
+      width: 220px;
+      text-align: center;
+      text-decoration: none;
+      cursor: pointer;
+      transition: transform 0.35s cubic-bezier(0.22,1,0.36,1),
+                  box-shadow 0.35s ease,
+                  border-color 0.3s ease,
+                  background 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .cat-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 18px;
+      background: radial-gradient(circle at 50% 0%, rgba(124,111,224,0.15) 0%, transparent 70%);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+    .cat-card:hover::before { opacity: 1; }
+    .cat-card:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 20px 50px rgba(124,111,224,0.2), 0 0 0 1px rgba(124,111,224,0.25);
+      border-color: rgba(124,111,224,0.3);
+      background: rgba(124,111,224,0.06);
+    }
+    .cat-card:active { transform: translateY(-4px) scale(1.01); }
+    .cat-icon {
+      font-size: 2.4rem;
+      margin-bottom: 16px;
+      display: block;
+      transition: transform 0.4s cubic-bezier(0.34,1.56,0.64,1);
+      filter: drop-shadow(0 0 10px rgba(124,111,224,0.3));
+    }
+    .cat-card:hover .cat-icon { transform: scale(1.2) rotate(-5deg); }
+    .cat-title {
+      color: #fff;
+      font-weight: 700;
+      font-size: 1.05rem;
+      margin-bottom: 6px;
+    }
+    .cat-desc {
+      color: #888;
+      font-size: 0.75rem;
+      line-height: 1.4;
+    }
+    .cat-tasks {
+      display: inline-block;
+      margin-top: 10px;
+      background: rgba(124,111,224,0.12);
+      border: 1px solid rgba(124,111,224,0.2);
+      color: #a89df5;
+      font-size: 0.68rem;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 12px;
+    }
+
+    .cat-card::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -75%;
+      width: 50%;
+      height: 200%;
+      background: linear-gradient(120deg, transparent, rgba(255,255,255,0.04), transparent);
+      transform: skewX(-20deg);
+      transition: left 0.6s ease;
+    }
+    .cat-card:hover::after { left: 130%; }
+
+    .stats-row {
+      display: flex;
+      gap: 24px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+      position: relative;
+      z-index: 2;
+      animation: fadeUp 0.9s cubic-bezier(0.22,1,0.36,1) 0.5s both;
+    }
+    .stat-chip {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 10px;
+      padding: 10px 20px;
+      text-align: center;
+    }
+    .stat-chip .num {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: #fff;
+      display: block;
+      line-height: 1;
+    }
+    .stat-chip .lbl { font-size: 0.72rem; color: #666; margin-top: 3px; display: block; }
+
+    .skills-section {
+      background: #0f0f1a;
+      padding: 50px 0 40px;
+      position: relative;
+      z-index: 2;
+    }
+    .skills-section h2 {
+      color: #fff;
+      font-weight: 700;
+      font-size: 1.5rem;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    .skills-section h2 span { color: #7c6fe0; }
+
+    .scroll-hint {
+      position: absolute;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 3;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      color: #555;
+      font-size: 0.72rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      animation: fadeUp 1s ease 1.2s both;
+    }
+    .scroll-hint .arrow {
+      width: 20px; height: 20px;
+      border-right: 2px solid #555;
+      border-bottom: 2px solid #555;
+      transform: rotate(45deg);
+      animation: bounceDown 1.5s ease infinite;
+    }
+    @keyframes bounceDown {
+      0%,100% { transform: rotate(45deg) translateY(0); }
+      50%      { transform: rotate(45deg) translateY(5px); }
+    }
+
+    .cursor-blink {
+      display: inline-block;
+      width: 3px; height: 0.9em;
+      background: #7c6fe0;
+      border-radius: 2px;
+      vertical-align: middle;
+      margin-left: 4px;
+      animation: cursorBlink 1s step-end infinite;
+    }
+    @keyframes cursorBlink {
+      0%,100% { opacity: 1; }
+      50%      { opacity: 0; }
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .task-section-bg {
+      background: #0f0f1a;
+      padding: 20px 0 10px;
+    }
+
+    @media (max-width: 767px) {
+      .cat-card { width: 100%; max-width: 300px; }
+      .hero-title { font-size: 2rem; }
+      .home-hero { min-height:auto; padding:100px 20px 60px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar navbar-expand-lg sticky-top" style="z-index:100">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">&lt;<span>IK</span>/&gt; Portfolio</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="nav">
+        <ul class="navbar-nav ms-auto align-items-lg-center">
+          <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="index.html#html-basics">HTML</a></li>
+          <li class="nav-item"><a class="nav-link" href="page2.html">CSS &amp; Forms</a></li>
+          <li class="nav-item"><a class="nav-link" href="page3.html">JavaScript</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">More Pages</a>
+            <ul class="dropdown-menu dropdown-menu-end">
+              <li><a class="dropdown-item" href="index.html#html-basics">&#128196; HTML Basics (1–4)</a></li>
+              <li><a class="dropdown-item" href="index.html#html-layouts">&#9707; Layouts (5–10)</a></li>
+              <li><a class="dropdown-item" href="index.html#html-elements">&#9776; Elements (11–14)</a></li>
+              <li><hr style="border-color:rgba(255,255,255,0.06);margin:4px 0"></li>
+              <li><a class="dropdown-item" href="page2.html">&#127912; CSS &amp; Forms (15–27)</a></li>
+              <li><a class="dropdown-item" href="page3.html">&#9889; JavaScript (28–45)</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <section class="home-hero">
+    <canvas id="particles"></canvas>
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+
+    <div class="hero-content">
+      <div class="hero-tag">&#127891; Web Programming Portfolio</div>
+      <h1 class="hero-title" id="typewriter-title"
+          data-tw='[{"t":"Web ","c":""},{"t":"Programming","c":"accent"},{"t":"\nPortfolio","c":""}]'>
+        Web <span class="accent">Programming</span><br>Portfolio<span class="cursor-blink"></span>
+      </h1>
+      <p class="hero-byline">By: <strong>Ishaan Kapil</strong> &nbsp;&mdash;&nbsp; 3rd Year CSE student</p>
+      <p class="hero-sub">45 assignments completed &bull; HTML &bull; CSS &bull; JavaScript &bull; Bootstrap</p>
+
+      <!-- CTA Buttons -->
+      <div style="margin-bottom:2rem;animation:fadeUp 0.9s cubic-bezier(0.22,1,0.36,1) 0.35s both">
+        <a href="index.html#html-basics" class="hero-cta"><span>&#128196; Explore Tasks</span></a>
+        <a href="page3.html" class="hero-cta-outline">&#9889; JS Demos</a>
+      </div>
+
+      <!-- 3 Big Category Cards -->
+      <div class="cat-cards">
+        <a class="cat-card" href="index.html#html-basics">
+          <span class="cat-icon">&#129513;</span>
+          <div class="cat-title">HTML Layouts</div>
+          <div class="cat-desc">Structure, Divs, Tables &amp; Lists</div>
+          <span class="cat-tasks">Tasks 1–14</span>
+        </a>
+        <a class="cat-card" href="page2.html">
+          <span class="cat-icon">&#9889;</span>
+          <div class="cat-title">CSS &amp; Forms</div>
+          <div class="cat-desc">Stylesheets, GitHub &amp; HTML Forms</div>
+          <span class="cat-tasks">Tasks 15–27</span>
+        </a>
+        <a class="cat-card" href="page3.html">
+          <span class="cat-icon">&#128187;</span>
+          <div class="cat-title">JavaScript</div>
+          <div class="cat-desc">DOM, Events, Validation &amp; z-index</div>
+          <span class="cat-tasks">Tasks 28–45</span>
+        </a>
+      </div>
+
+      <!-- Stats row with animated counters -->
+      <div class="stats-row">
+        <div class="stat-chip"><span class="num count-up" data-target="14">0</span><span class="lbl">HTML Tasks</span></div>
+        <div class="stat-chip"><span class="num count-up" data-target="13">0</span><span class="lbl">CSS Tasks</span></div>
+        <div class="stat-chip"><span class="num count-up" data-target="18">0</span><span class="lbl">JS Tasks</span></div>
+        <div class="stat-chip"><span class="num count-up" data-target="45">0</span><span class="lbl">Total Done</span></div>
+      </div>
+    </div>
+
+    <div class="scroll-hint">
+      <span>Scroll</span>
+      <div class="arrow"></div>
+    </div>
+  </section>
+
+  <section class="skills-section">
+    <div class="container">
+      <h2>Skills <span>Progress</span></h2>
+      <div class="row g-4">
+        <div class="col-lg-6">
+          <div class="skill-bar-wrap">
+            <div class="skill-label"><span>HTML5</span><span class="skill-pct high">95%</span></div>
+            <div class="skill-bar"><div class="skill-bar-fill bar-html" style="width:95%"></div></div>
+          </div>
+          <div class="skill-bar-wrap">
+            <div class="skill-label"><span>CSS3</span><span class="skill-pct good">88%</span></div>
+            <div class="skill-bar"><div class="skill-bar-fill bar-css" style="width:88%"></div></div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="skill-bar-wrap">
+            <div class="skill-label"><span>JavaScript</span><span class="skill-pct medium">82%</span></div>
+            <div class="skill-bar"><div class="skill-bar-fill bar-js" style="width:82%"></div></div>
+          </div>
+          <div class="skill-bar-wrap">
+            <div class="skill-label"><span>Bootstrap 5</span><span class="skill-pct high">90%</span></div>
+            <div class="skill-bar"><div class="skill-bar-fill bar-bootstrap" style="width:90%"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="task-section-bg">
+    <div class="container">
+
+      <h2 class="section-heading" id="html-basics">&#128196; HTML Basics &amp; Server Configuration</h2>
+      <div class="row g-4 mb-2">
+        <div class="col-md-6">
+          <div class="task-card card">
+            <div class="card-header d-flex align-items-center justify-content-between">
+              <span><span class="task-num html-bg">1</span>Basic HTML Program</span>
+              <span class="badge-done">&#10003; Done</span>
+            </div>
+            <div class="card-body">
+              <p>Create a basic HTML document with DOCTYPE, head/body sections, h1-h3 headings, and paragraphs.</p>
+              <div class="demo-box">
+                <strong>Preview:</strong>
+                <h5 style="margin:8px 0 4px;color:#fff;font-size:1rem">Hello World!</h5>
+                <p style="margin:0;color:#999;font-size:0.82rem">This is my first HTML page. I am learning Web Programming.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="task-card card">
+            <div class="card-header d-flex align-items-center justify-content-between">
+              <span><span class="task-num html-bg">2</span>Web Server Config</span>
+              <span class="badge-done">&#10003; Done</span>
+            </div>
+            <div class="card-body">
+              <p>Configure XAMPP local server and serve HTML files from localhost.</p>
+              <div class="demo-box">
+                <strong>Steps done:</strong>
+                <ol style="margin:6px 0 0;padding-left:18px;font-size:0.8rem;color:#bbb">
+                  <li>Installed XAMPP</li>
+                  <li>Started Apache server</li>
+                  <li>Files in <code style="color:#a89df5">htdocs/</code></li>
+                  <li>Accessed <code style="color:#a89df5">localhost/file.html</code></li>
+                </ol>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="task-card card">
+            <div class="card-header d-flex align-items-center justify-content-between">
+              <span><span class="task-num html-bg">3</span>Basic HTML Structure</span>
+              <span class="badge-done">&#10003; Done</span>
+            </div>
+            <div class="card-body">
+              <p>HTML structure with h1–h6 headings, paragraphs, line breaks, bold, italic, and underline.</p>
+              <div class="demo-box">
+                <p style="font-size:0.85rem;margin:0">Has <strong style="color:#fff">bold</strong>, <em style="color:#a89df5">italic</em>, and <u>underlined</u> text with &lt;br&gt; line breaks.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="task-card card">
+            <div class="card-header d-flex align-items-center justify-content-between">
+              <span><span class="task-num html-bg">4</span>5-Page Local Server Site</span>
+              <span class="badge-done">&#10003; Done</span>
+            </div>
+            <div class="card-body">
+              <p>Five interlinked HTML pages served from XAMPP local server.</p>
+              <div class="demo-box">
+                <div class="d-flex flex-wrap gap-1">
+                  <span class="badge bg-secondary">home.html</span>
+                  <span class="badge bg-secondary">about.html</span>
+                  <span class="badge bg-secondary">department.html</span>
+                  <span class="badge bg-secondary">gallery.html</span>
+                  <span class="badge bg-secondary">contact.html</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <h2 class="section-heading" id="html-layouts">&#9707; HTML Layouts Practice</h2>
+      <div class="row g-4 mb-2">
+        <div class="col-md-6">
+          <div class="task-card card">
+            <div class="card-header d-flex align-items-center justify-content-between">
+              <span><span class="task-num html-bg">5</span>4-Section Div Layout</span>
+              <span class="badge-done">&#10003; Done</span>
+            </div>
+            <div class="card-body">
+              <p>Div-based page with header, nav sidebar, main content, and footer.</p>
+              <div class="demo-box">
+                <div class="layout-box" style="background:rgba(124,111,224,0.25);color:#c5bcf7">Header</div>
+                <div class="d-flex">
+                  <div class="layout-box" style="width:30%">Nav</div>
+                  <div class="layout-box" style="width:70%">Main Content</div>
+                </div>
+                <div class="layout-box" style="background:rgba(255,255,255,0.04)">Footer</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="task-card card">
+            <div class="card-header d-flex align-items-center justify-content-between">
+              <span><span class="task-num html-bg">6</span>Home Layout with Images</span>
+              <span class="badge-done">&#10003; Done</span>
+            </div>
+            <div class="card-body">
+              <p>Home page with div sections, text content, and images side-by-side.</p>
+              <div class="demo-box">
+                <div class="layout-box mb-1" style="background:rgba(124,111,224,0.25);color:#c5bcf7">My Website Header</div>
+                <div class="d-flex gap-2 align-items-center p-1">
+                  <div style="width:40px;height:40px;background:rgba(255,255,255,0.06);border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0">🖼️</div>
+                  <span style="font-size:0.78rem;color:#aaa">Welcome text and images</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="task-card card">
+            <div class="card-header d-flex align-items-center justify-content-between">
+              <span><span class="task-num html-bg">7</span>3 Stacked Sections (200px)</span>
+              <span class="badge-done">&#10003; Done</span>
+            </div>
+            <div class="card-body">
+              <p>Main content with three stacked 200px tall sections with distinct content.</p>
+              <div class="demo-box">
+                <div style="height:36px;background:rgba(40,167,69,0.15);border:1px solid rgba(40,167,69,0.2);border-radius:6px;display:flex;align-items:center;justify-content:center;margin-bottom:4px;font-size:0.75rem;color:#5fd87e">Section 1 — About Us</div>
+                <div style="height:36px;background:rgba(124,111,224,0.15);border:1px solid rgba(124,111,224,0.2);border-radius:6px;display:flex;align-items:center;justify-content:center;margin-bottom:4px;font-size:0.75rem;color:#a89df5">Section 2 — Services</div>
+                <div style="height:36px;background:rgba(220,53,69,0.12);border:1px solid rgba(220,53,69,0.2);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:0.75rem;color:#f88">Section 3 — Contact</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="task-card card">
+            <div class="card-header d-flex align-items-center justify-content-between">
+              <span><span class="task-num html-bg">8</span>About Page Layout</span>
+              <span class="badge-done">&#10003; Done</span>
+            </div>
+            <div class="card-body">
+              <p>About page with company header, mission statement, team, and footer.</p>
+              <div class="demo-box">
+                <div class="layout-box mb-1" style="background:rgba(124,111,224,0.25);color:#c5bcf7">TechCorp Inc.</div>
+                <div class="layout-box mb-1" style="font-size:0.72rem;text-align:left;padding:6px"><strong style="color:#ddd">Mission:</strong> Delivering innovative tech</div>
+                <div class="layout-box" style="background:rgba(255,255,255,0.03);font-size:0.72rem">Team: CEO · CTO · Designer · Dev</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="task-card card">
+            <div class="card-header d-flex align-items-center justify-content-between">
+              <span><span class="task-num html-bg">9</span>Gallery Page Layout</span>
+              <span class="badge-done">&#10003; Done</span>
+            </div>
+            <div class="card-body">
+              <p>Gallery page with header and image grid container in a div layout.</p>
+              <div class="demo-box">
+                <div class="layout-box mb-1" style="background:rgba(124,111,224,0.25);color:#c5bcf7">📷 Photo Gallery</div>
+                <div class="row g-1">
+                  <div class="col-4"><div class="layout-box" style="height:32px;background:rgba(255,255,255,0.05);font-size:0.68rem">IMG 1</div></div>
+                  <div class="col-4"><div class="layout-box" style="height:32px;background:rgba(255,255,255,0.04);font-size:0.68rem">IMG 2</div></div>
+                  <div class="col-4"><div class="layout-box" style="height:32px;background:rgba(255,255,255,0.06);font-size:0.68rem">IMG 3</div></div>
+                  <div class="col-4"><div class="layout-box" style="height:32px;background:rgba(255,255,255,0.04);font-size:0.68rem">IMG 4</div></div>
+                  <div class="col-4"><div class="layout-box" style="height:32px;background:rgba(255,255,255,0.06);font-size:0.68rem">IMG 5</div></div>
+                  <div class="col-4"><div class="layout-box" style="height:32px;background:rgba(255,255,255,0.05);font-size:0.68rem">IMG 6</div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="task-card card">
+            <div class="card-header d-flex align-items-center justify-content-between">
+              <span><span class="task-num html-bg">10</span>Contact Us Page</span>
+              <span class="badge-done">&#10003; Done</span>
+            </div>
+            <div class="card-body">
+              <p>Contact page with info section, form area, and map placeholder.</p>
+              <div class="demo-box">
+                <div class="layout-box mb-1" style="background:rgba(124,111,224,0.25);color:#c5bcf7">Contact Us</div>
+                <div class="row g-1">
+                  <div class="col-6"><div class="layout-box" style="text-align:left;padding:6px;font-size:0.68rem;height:100%">📧 info@company.com<br>📞 +91 98765 43210</div></div>
+                  <div class="col-6"><div class="layout-box" style="height:50px;display:flex;align-items:center;justify-content:center;font-size:0.7rem">🗺️ Map</div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <h2 class="section-heading" id="html-elements">&#9776; HTML Elements Practice</h2>
+      <div class="row g-4 mb-2">
+        <div class="col-md-6">
+          <div class="task-card card">
+            <div class="card-header d-flex align-items-center justify-content-between">
+              <span><span class="task-num html-bg">11</span>Restaurant Menu (Lists)</span>
+              <span class="badge-done">&#10003; Done</span>
+            </div>
+            <div class="card-body">
+              <p>Menu using ordered &amp; unordered lists for categories and dish items.</p>
+              <div class="demo-box">
+                <strong>🍽️ The Food Place</strong>
+                <ul style="margin:6px 0 0;padding-left:16px;font-size:0.8rem;color:#bbb">
+                  <li><strong style="color:#ddd">Starters</strong><ul><li>Bruschetta — ₹350</li><li>Spring Rolls — ₹280</li></ul></li>
+                  <li><strong style="color:#ddd">Main Course</strong><ol><li>Grilled Chicken — ₹550</li><li>Paneer Masala — ₹420</li></ol></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="task-card card">
+            <div class="card-header d-flex align-items-center justify-content-between">
+              <span><span class="task-num html-bg">12</span>Course Outline Page</span>
+              <span class="badge-done">&#10003; Done</span>
+            </div>
+            <div class="card-body">
+              <p>Web Programming Course Outline using headings, ordered lists &amp; description lists.</p>
+              <div class="demo-box">
+                <strong>Web Programming Course</strong>
+                <dl style="margin:6px 0 0;font-size:0.8rem">
+                  <dt style="color:#a89df5">Module 1: HTML</dt><dd style="color:#bbb">Tags, attributes, forms</dd>
+                  <dt style="color:#a89df5">Module 2: CSS</dt><dd style="color:#bbb">Selectors, box model</dd>
+                  <dt style="color:#a89df5">Module 3: JS</dt><dd style="color:#bbb">DOM, events, validation</dd>
+                </dl>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="task-card card">
+            <div class="card-header d-flex align-items-center justify-content-between">
+              <span><span class="task-num html-bg">13</span>Restaurant Menu (Table)</span>
+              <span class="badge-done">&#10003; Done</span>
+            </div>
+            <div class="card-body">
+              <p>Menu in a 3-column HTML table: Dish Name, Description, Price.</p>
+              <div class="demo-box">
+                <table class="demo-table">
+                  <tr><th>Dish</th><th>Description</th><th>Price</th></tr>
+                  <tr><td>Margherita Pizza</td><td>Tomato &amp; cheese</td><td>₹450</td></tr>
+                  <tr><td>Caesar Salad</td><td>Romaine, croutons</td><td>₹320</td></tr>
+                  <tr><td>Pasta Alfredo</td><td>Creamy sauce</td><td>₹480</td></tr>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="task-card card">
+            <div class="card-header d-flex align-items-center justify-content-between">
+              <span><span class="task-num html-bg">14</span>Student Leaderboard</span>
+              <span class="badge-done">&#10003; Done</span>
+            </div>
+            <div class="card-body">
+              <p>Student rankings displayed in a styled table with position medals.</p>
+              <div class="demo-box">
+                <table class="demo-table">
+                  <tr><th>Rank</th><th>Student</th><th>Score</th></tr>
+                  <tr><td>🥇 1st</td><td>Arjun Sharma</td><td>98/100</td></tr>
+                  <tr><td>🥈 2nd</td><td>Priya Patel</td><td>95/100</td></tr>
+                  <tr><td>🥉 3rd</td><td>Rahul Gupta</td><td>92/100</td></tr>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center my-5">
+        <a href="page2.html" class="page-nav-btn next">CSS &amp; Forms Tasks (15–27) &rarr;</a>
+      </div>
+
+    </div>
+  </div>
+
+  <footer>
+    <div class="container">
+      <div>&lt;<span style="color:#7c6fe0">IK</span>/&gt; <strong style="color:#ccc">Ishaan Kapil</strong> &mdash; 3rd Year CSE student &mdash; Web Programming &mdash; 2025</div>
+      <div class="footer-links">
+        <a href="index.html">&#128196; HTML Tasks</a>
+        <a href="page2.html">&#127912; CSS &amp; Forms</a>
+        <a href="page3.html">&#9889; JavaScript</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+
+    (function() {
+      var canvas = document.getElementById('particles');
+      var ctx = canvas.getContext('2d');
+      var dots = [];
+      var NUM = 55;
+
+      function resize() {
+        canvas.width  = canvas.parentElement.offsetWidth;
+        canvas.height = canvas.parentElement.offsetHeight;
+      }
+      resize();
+      window.addEventListener('resize', resize);
+
+      for (var i = 0; i < NUM; i++) {
+        dots.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          r: Math.random() * 1.8 + 0.4,
+          vx: (Math.random() - 0.5) * 0.25,
+          vy: (Math.random() - 0.5) * 0.25,
+          alpha: Math.random() * 0.5 + 0.1
+        });
+      }
+
+      function draw() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        dots.forEach(function(d) {
+          d.x += d.vx; d.y += d.vy;
+          if (d.x < 0) d.x = canvas.width;
+          if (d.x > canvas.width) d.x = 0;
+          if (d.y < 0) d.y = canvas.height;
+          if (d.y > canvas.height) d.y = 0;
+          ctx.beginPath();
+          ctx.arc(d.x, d.y, d.r, 0, Math.PI * 2);
+          ctx.fillStyle = 'rgba(124,111,224,' + d.alpha + ')';
+          ctx.fill();
+        });
+        for (var i = 0; i < dots.length; i++) {
+          for (var j = i + 1; j < dots.length; j++) {
+            var dx = dots[i].x - dots[j].x;
+            var dy = dots[i].y - dots[j].y;
+            var dist = Math.sqrt(dx*dx + dy*dy);
+            if (dist < 100) {
+              ctx.beginPath();
+              ctx.moveTo(dots[i].x, dots[i].y);
+              ctx.lineTo(dots[j].x, dots[j].y);
+              ctx.strokeStyle = 'rgba(124,111,224,' + (0.08 * (1 - dist/100)) + ')';
+              ctx.lineWidth = 0.5;
+              ctx.stroke();
+            }
+          }
+        }
+        requestAnimationFrame(draw);
+      }
+      draw();
+    })();
+  </script>
+  <script src="js/main.js"></script>
+</body>
+</html>

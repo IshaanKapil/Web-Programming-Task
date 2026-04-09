@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Web Programming Portfolio - JavaScript Tasks</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+
+  <nav class="navbar navbar-expand-lg sticky-top">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">&lt;<span>IK</span>/&gt; Portfolio</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav"><span class="navbar-toggler-icon"></span></button>
+      <div class="collapse navbar-collapse" id="nav">
+        <ul class="navbar-nav ms-auto align-items-lg-center">
+          <li class="nav-item"><a class="nav-link" href="index.html">HTML Tasks</a></li>
+          <li class="nav-item"><a class="nav-link" href="page2.html">CSS &amp; Forms</a></li>
+          <li class="nav-item"><a class="nav-link active" href="page3.html">JavaScript</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Jump To</a>
+            <ul class="dropdown-menu dropdown-menu-end">
+              <li><a class="dropdown-item" href="#js-basics">&#9889; JS Basics (28&ndash;32)</a></li>
+              <li><a class="dropdown-item" href="#js-forms">&#128203; JS Forms (33&ndash;37)</a></li>
+              <li><a class="dropdown-item" href="#js-events">&#128065; JS Events (38&ndash;41)</a></li>
+              <li><a class="dropdown-item" href="#advanced-js">&#128204; Advanced JS/CSS (42&ndash;45)</a></li>
+              <li><hr style="border-color:rgba(255,255,255,0.06);margin:4px 0"></li>
+              <li><a class="dropdown-item" href="index.html">&#128196; HTML Tasks (1&ndash;14)</a></li>
+              <li><a class="dropdown-item" href="page2.html">&#127912; CSS &amp; Forms (15&ndash;27)</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <style>
+    .sub-hero {
+      min-height: 52vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background: #0d0d1a;
+      position: relative;
+      overflow: hidden;
+      padding: 100px 20px 60px;
+    }
+    .sub-hero::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 70px;
+      background: linear-gradient(to top, #0f0f1a, transparent);
+      z-index: 1;
+      pointer-events: none;
+    }
+    .sub-hero .sh-content { position: relative; z-index: 2; }
+    .sh-blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.12;
+      z-index: 0;
+      animation: blobF 8s ease-in-out infinite alternate;
+    }
+    @keyframes blobF {
+      from { transform: translate(0,0) scale(1); }
+      to   { transform: translate(20px,15px) scale(1.08); }
+    }
+    .sh-tag {
+      display: inline-block;
+      background: rgba(201,168,0,0.15);
+      border: 1px solid rgba(201,168,0,0.3);
+      color: #f0c040;
+      font-size: 0.7rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      font-weight: 600;
+      padding: 5px 16px;
+      border-radius: 20px;
+      margin-bottom: 1rem;
+      animation: fadeUp 0.7s cubic-bezier(0.22,1,0.36,1) both;
+    }
+    .sh-title {
+      font-size: clamp(1.8rem, 5vw, 3.2rem);
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: -0.5px;
+      line-height: 1.1;
+      margin-bottom: 0.5rem;
+      animation: fadeUp 0.8s cubic-bezier(0.22,1,0.36,1) 0.1s both;
+    }
+    .sh-title .acc3 { color: #f0db4f; }
+    .sh-byline {
+      color: #888;
+      font-size: 0.92rem;
+      margin-bottom: 1.6rem;
+      animation: fadeUp 0.8s cubic-bezier(0.22,1,0.36,1) 0.2s both;
+    }
+    .sh-chips {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+      animation: fadeUp 0.8s cubic-bezier(0.22,1,0.36,1) 0.3s both;
+      margin-bottom: 1.2rem;
+    }
+    .sh-chip {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 10px;
+      padding: 8px 18px;
+      text-align: center;
+      font-size: 0.78rem;
+      color: #aaa;
+    }
+    .sh-chip strong { display: block; font-size: 1.2rem; color: #fff; }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+
+  <!-- Page 3 Hero -->
+  <section class="sub-hero">
+    <div class="sh-blob" style="width:350px;height:350px;background:#c9a800;top:-80px;left:-80px;animation-delay:0s"></div>
+    <div class="sh-blob" style="width:250px;height:250px;background:#7c6fe0;bottom:-60px;right:-60px;animation-delay:3s"></div>
+    <div class="sh-blob" style="width:180px;height:180px;background:#e44d26;top:40%;right:12%;animation-delay:6s"></div>
+    <div class="sh-content">
+      <div class="sh-tag">&#9889; JavaScript</div>
+      <h1 class="sh-title" id="typewriter-title"
+          data-tw='[{"t":"JavaScript","c":"acc3"},{"t":"\nTasks","c":""}]'>
+        <span class="acc3">JavaScript</span><br>Tasks
+      </h1>
+      <p class="sh-byline">Tasks 28&ndash;45 &mdash; JS Basics, Forms, Event Listeners &amp; Advanced JS/CSS</p>
+      <div class="sh-chips">
+        <div class="sh-chip"><strong>5</strong>JS Basics</div>
+        <div class="sh-chip"><strong>8</strong>Forms &amp; Validation</div>
+        <div class="sh-chip"><strong>2</strong>Event Listeners</div>
+        <div class="sh-chip"><strong>3</strong>z-index &amp; Layers</div>
+      </div>
+      <a href="page2.html" style="display:inline-flex;align-items:center;gap:6px;background:rgba(201,168,0,0.12);border:1px solid rgba(201,168,0,0.3);color:#f0c040;font-weight:600;font-size:0.85rem;padding:10px 22px;border-radius:50px;text-decoration:none;transition:all 0.3s ease" onmouseover="this.style.background='rgba(201,168,0,0.25)';this.style.color='#fff'" onmouseout="this.style.background='rgba(201,168,0,0.12)';this.style.color='#f0c040'">&larr; CSS &amp; Forms Tasks</a>
+    </div>
+  </section>
+
+  <div class="container">
+
+    <h2 class="section-heading" id="js-basics">&#9889; JavaScript Practice Basics</h2>
+    <div class="row g-4 mb-4">
+
+      <div class="col-md-6">
+        <div class="task-card card">
+          <div class="card-header"><span class="task-num js-bg">28</span>Change Paragraph Text <span class="badge-done float-end">Completed</span></div>
+          <div class="card-body">
+            <p>Button click changes a paragraph's text using JavaScript DOM manipulation.</p>
+            <div class="demo-box">
+              <p id="demo28">This is the original paragraph text.</p>
+              <button class="btn btn-warning btn-sm" onclick="changeParagraph()">Change Text</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="task-card card">
+          <div class="card-header"><span class="task-num js-bg">29</span>Read Input &amp; Display <span class="badge-done float-end">Completed</span></div>
+          <div class="card-body">
+            <p>Text input with Submit button that reads and displays the entered value.</p>
+            <div class="demo-box">
+              <input class="form-control form-control-sm mb-2" id="input29" placeholder="Type something...">
+              <button class="btn btn-warning btn-sm" onclick="submitInput()">Submit</button>
+              <p id="output29" class="mt-2 mb-0" style="font-weight:500"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="task-card card">
+          <div class="card-header"><span class="task-num js-bg">30</span>calculateTotal Function <span class="badge-done float-end">Completed</span></div>
+          <div class="card-body">
+            <p>Function calculateTotal(price, quantity) that computes and returns the product.</p>
+            <div class="demo-box">
+              <div class="row g-2 mb-2">
+                <div class="col-6"><input class="form-control form-control-sm" id="price30" type="number" placeholder="Price"></div>
+                <div class="col-6"><input class="form-control form-control-sm" id="qty30" type="number" placeholder="Qty"></div>
+              </div>
+              <button class="btn btn-warning btn-sm" onclick="calculateTotal()">Calculate</button>
+              <p id="total30" class="mt-2 mb-0" style="font-weight:600"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="task-card card">
+          <div class="card-header"><span class="task-num js-bg">31</span>Show Message Button <span class="badge-done float-end">Completed</span></div>
+          <div class="card-body">
+            <p>Button labeled "Show Message" that displays a greeting when clicked.</p>
+            <div class="demo-box">
+              <button class="btn btn-warning btn-sm" onclick="showMessage()">Show Message</button>
+              <p id="msg31" class="mt-2 mb-0"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="task-card card">
+          <div class="card-header"><span class="task-num js-bg">32</span>Toggle Online/Offline <span class="badge-done float-end">Completed</span></div>
+          <div class="card-body">
+            <p>Toggle between "Status: Online" (green) and "Status: Offline" (gray) on click.</p>
+            <div class="demo-box">
+              <p id="status32" style="font-weight:600;color:#888">Status: Offline</p>
+              <button class="btn btn-warning btn-sm" id="toggleBtn" onclick="toggleStatus()">Go Online</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h2 class="section-heading" id="js-forms">&#128203; Forms &amp; Validation</h2>
+    <p style="color:#888;font-size:0.85rem;margin-bottom:20px">Tasks 25, 33–39 — Similar form tasks merged: HTML structure + JS validation + Event listeners combined into complete demos</p>
+    <div class="row g-4 mb-4">
+
+      <div class="col-md-6">
+        <div class="task-card card">
+          <div class="card-header d-flex align-items-center justify-content-between">
+            <span>
+              <span class="task-num js-bg" style="width:auto;border-radius:12px;padding:0 8px;font-size:0.7rem">25,35,39</span>
+              &nbsp;Login Forms (HTML + JS + Focus)
+            </span>
+            <span class="badge-done">&#10003; Done</span>
+          </div>
+          <div class="card-body">
+            <p>Task 25: HTML login form &bull; Task 35: VTOP JS validation &bull; Task 39: auto-focus on load — all merged into one complete login demo.</p>
+            <div class="demo-box">
+              <strong style="font-size:0.8rem;color:#a89df5">&#9889; Live Demo — try: admin / password123</strong>
+              <form onsubmit="vtopLogin(event)" class="mt-2">
+                <input class="form-control form-control-sm mb-1" id="vtopUser" id="focusUser39" placeholder="Username">
+                <input class="form-control form-control-sm mb-1" id="vtopPass" type="password" placeholder="Password">
+                <div class="d-flex justify-content-between align-items-center mb-2" style="font-size:0.72rem">
+                  <label><input type="checkbox"> Remember me</label>
+                  <a href="#" style="color:#a89df5">Forgot password?</a>
+                </div>
+                <button type="submit" class="btn btn-warning btn-sm w-100">Login</button>
+              </form>
+              <p id="vtopResult" class="mt-2 mb-0" style="font-size:0.82rem"></p>
+              <small class="text-muted">Username field auto-focused via JS (Task 39)</small>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="task-card card">
+          <div class="card-header d-flex align-items-center justify-content-between">
+            <span>
+              <span class="task-num js-bg" style="width:auto;border-radius:12px;padding:0 8px;font-size:0.7rem">26,33,38</span>
+              &nbsp;Registration (HTML + JS + Events)
+            </span>
+            <span class="badge-done">&#10003; Done</span>
+          </div>
+          <div class="card-body">
+            <p>Task 26: HTML registration fields &bull; Task 33: password confirm validation &bull; Task 38: focus/blur/submit event listeners.</p>
+            <div class="demo-box">
+              <strong style="font-size:0.8rem;color:#a89df5">&#9889; Live Demo — focus fields for effects</strong>
+              <form id="regForm38" onsubmit="validateUniReg(event)" class="mt-2">
+                <div class="row g-1 mb-1">
+                  <div class="col-6"><input class="form-control form-control-sm" placeholder="First Name"></div>
+                  <div class="col-6"><input class="form-control form-control-sm" placeholder="Last Name"></div>
+                </div>
+                <input class="form-control form-control-sm mb-1" id="uniEmail" type="email" placeholder="Email">
+                <input class="form-control form-control-sm mb-1" id="uniPass" type="password" placeholder="Password (min 8)">
+                <input class="form-control form-control-sm mb-1" id="uniConfirm" type="password" placeholder="Confirm Password">
+                <div style="font-size:0.72rem" class="mb-2">
+                  <label class="me-2"><input type="radio" name="gen"> Male</label>
+                  <label class="me-2"><input type="radio" name="gen"> Female</label>
+                  <label><input type="radio" name="gen"> Other</label>
+                </div>
+                <button type="submit" class="btn btn-warning btn-sm w-100">Register</button>
+                <p id="regResult38" class="mt-1 mb-0" style="font-size:0.82rem"></p>
+              </form>
+              <p id="uniResult" class="mt-1 mb-0" style="font-size:0.82rem"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="task-card card">
+          <div class="card-header d-flex align-items-center justify-content-between">
+            <span>
+              <span class="task-num css-bg" style="width:auto;border-radius:12px;padding:0 8px;font-size:0.7rem">23,27</span>
+              &nbsp;Contact Form (CSS + HTML)
+            </span>
+            <span class="badge-done">&#10003; Done</span>
+          </div>
+          <div class="card-body">
+            <p>Task 23: external CSS responsive contact form &bull; Task 27: HTML form with subject dropdown and textarea — combined.</p>
+            <div class="demo-box">
+              <form onsubmit="event.preventDefault();document.getElementById('contactResult').textContent='Message sent!';document.getElementById('contactResult').style.color='#5fd87e'">
+                <input class="form-control form-control-sm mb-1" placeholder="Full Name">
+                <input class="form-control form-control-sm mb-1" type="email" placeholder="Email">
+                <select class="form-select form-select-sm mb-1">
+                  <option>Select Subject</option>
+                  <option>General Inquiry</option>
+                  <option>Technical Support</option>
+                  <option>Other</option>
+                </select>
+                <textarea class="form-control form-control-sm mb-1" rows="2" placeholder="Your message..."></textarea>
+                <button type="submit" class="btn btn-warning btn-sm w-100">Send Message</button>
+              </form>
+              <p id="contactResult" class="mt-1 mb-0" style="font-size:0.82rem"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="task-card card">
+          <div class="card-header d-flex align-items-center justify-content-between">
+            <span><span class="task-num js-bg">34</span>Checkout Form Validation</span>
+            <span class="badge-done">&#10003; Done</span>
+          </div>
+          <div class="card-body">
+            <p>Shopping checkout form with name and phone number JS validation (10-digit check).</p>
+            <div class="demo-box">
+              <form onsubmit="validateCheckout(event)">
+                <input class="form-control form-control-sm mb-1" id="coName" placeholder="Full Name" required>
+                <input class="form-control form-control-sm mb-1" id="coPhone" placeholder="Phone (10 digits)" required>
+                <input class="form-control form-control-sm mb-1" placeholder="Delivery Address" required>
+                <button type="submit" class="btn btn-warning btn-sm w-100">Place Order</button>
+              </form>
+              <p id="coResult" class="mt-2 mb-0" style="font-size:0.82rem"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="task-card card">
+          <div class="card-header d-flex align-items-center justify-content-between">
+            <span><span class="task-num js-bg">36</span>Exam Registration</span>
+            <span class="badge-done">&#10003; Done</span>
+          </div>
+          <div class="card-body">
+            <p>Exam registration form with student name, email, and subject selection dropdown.</p>
+            <div class="demo-box">
+              <form onsubmit="examReg(event)">
+                <input class="form-control form-control-sm mb-1" placeholder="Student Name" required>
+                <input class="form-control form-control-sm mb-1" type="email" placeholder="Email" required>
+                <select class="form-select form-select-sm mb-1">
+                  <option>Select Subject</option>
+                  <option>Web Programming</option>
+                  <option>Data Structures</option>
+                  <option>DBMS</option>
+                </select>
+                <button type="submit" class="btn btn-warning btn-sm w-100">Register for Exam</button>
+              </form>
+              <p id="examResult" class="mt-2 mb-0" style="font-size:0.82rem"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="task-card card">
+          <div class="card-header d-flex align-items-center justify-content-between">
+            <span><span class="task-num js-bg">37</span>Hotel Booking</span>
+            <span class="badge-done">&#10003; Done</span>
+          </div>
+          <div class="card-body">
+            <p>Hotel booking with room type (radio buttons) and amenities (checkboxes).</p>
+            <div class="demo-box">
+              <form onsubmit="hotelBook(event)">
+                <input class="form-control form-control-sm mb-1" placeholder="Guest Name" required>
+                <input class="form-control form-control-sm mb-1" placeholder="Contact Number" required>
+                <div style="font-size:0.78rem" class="mb-1">
+                  <strong>Room:</strong>
+                  <label class="ms-2"><input type="radio" name="room"> Single</label>
+                  <label class="ms-2"><input type="radio" name="room"> Double</label>
+                  <label class="ms-2"><input type="radio" name="room"> Suite</label>
+                </div>
+                <div style="font-size:0.78rem" class="mb-2">
+                  <strong>Amenities:</strong>
+                  <label class="ms-2"><input type="checkbox"> WiFi</label>
+                  <label class="ms-2"><input type="checkbox"> Breakfast</label>
+                  <label class="ms-2"><input type="checkbox"> Pool</label>
+                </div>
+                <button type="submit" class="btn btn-warning btn-sm w-100">Book Room</button>
+              </form>
+              <p id="hotelResult" class="mt-2 mb-0" style="font-size:0.82rem"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="task-card card">
+          <div class="card-header d-flex align-items-center justify-content-between">
+            <span><span class="task-num js-bg">40</span>Image Hover Events</span>
+            <span class="badge-done">&#10003; Done</span>
+          </div>
+          <div class="card-body">
+            <p>mouseover / mouseout event listeners on a product image reveal details on hover.</p>
+            <div class="demo-box">
+              <div id="hoverBox40" style="width:120px;height:80px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.1);border-radius:8px;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all 0.3s;font-size:1.5rem;margin-bottom:8px">📦</div>
+              <p id="hoverInfo40" class="mb-0" style="font-size:0.82rem;color:#888">Hover over the product above</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="task-card card">
+          <div class="card-header d-flex align-items-center justify-content-between">
+            <span><span class="task-num js-bg">41</span>Real-time Input Validation</span>
+            <span class="badge-done">&#10003; Done</span>
+          </div>
+          <div class="card-body">
+            <p>input event listeners for live email format check and password strength indicator.</p>
+            <div class="demo-box">
+              <label style="font-size:0.78rem;color:#aaa">Email</label>
+              <input class="form-control form-control-sm mb-1" id="email41" type="email" placeholder="Type email...">
+              <small id="emailFb41" class="d-block mb-2" style="font-size:0.78rem"></small>
+              <label style="font-size:0.78rem;color:#aaa">Password</label>
+              <input class="form-control form-control-sm mb-1" id="pass41" type="password" placeholder="Type password...">
+              <small id="passFb41" class="d-block" style="font-size:0.78rem"></small>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <h2 class="section-heading" id="advanced-js">&#128204; Advanced JavaScript / CSS z-index</h2>
+    <div class="row g-4 mb-4">
+
+      <div class="col-md-6">
+        <div class="task-card card">
+          <div class="card-header"><span class="task-num js-bg">42</span>Modals &amp; Product Tooltip <span class="badge-done float-end">Completed</span></div>
+          <div class="card-body">
+            <p>Multiple modals (login, signup, confirmation) with z-index layering, and a product card with hover tooltip.</p>
+            <div class="demo-box">
+              <div class="mb-2">
+                <button class="btn btn-outline-primary btn-sm me-1" data-bs-toggle="modal" data-bs-target="#loginModal">Login Modal</button>
+                <button class="btn btn-outline-success btn-sm me-1" data-bs-toggle="modal" data-bs-target="#signupModal">Signup Modal</button>
+                <button class="btn btn-outline-danger btn-sm" data-bs-toggle="modal" data-bs-target="#confirmModal">Confirm</button>
+              </div>
+              <div style="max-width:160px;background:#eee;border-radius:8px;padding:10px;text-align:center;position:relative;cursor:pointer" onmouseover="this.querySelector('.tt').style.display='block'" onmouseout="this.querySelector('.tt').style.display='none'">
+                <div style="font-size:2rem">📱</div>
+                <strong style="font-size:0.8rem">Smartphone</strong><br>
+                <small>Rs.49,999</small>
+                <div class="tt" style="display:none;position:absolute;top:-30px;left:0;right:0;background:#333;color:#fff;padding:4px;border-radius:4px;font-size:0.7rem">5G · 128GB · AMOLED</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="task-card card">
+          <div class="card-header"><span class="task-num js-bg">43</span>Image Caption Overlay <span class="badge-done float-end">Completed</span></div>
+          <div class="card-body">
+            <p>Image (position: relative) with caption div (position: absolute) using z-index.</p>
+            <div class="demo-box">
+              <div style="position:relative;width:200px;height:120px;background:linear-gradient(135deg,#11998e,#38ef7d);border-radius:8px;overflow:hidden">
+                <div style="position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,0.6);color:#fff;padding:6px;font-size:0.75rem;z-index:2">
+                  Beautiful Landscape Photo
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="task-card card">
+          <div class="card-header"><span class="task-num js-bg">44</span>Z-index Layers &amp; Fixed Header <span class="badge-done float-end">Completed</span></div>
+          <div class="card-body">
+            <p>Colorful positioned divs (z-index: 1-3) with fixed header (z-index: 999).</p>
+            <div class="demo-box">
+              <div style="background:#4e54c8;color:#fff;padding:4px 8px;font-size:0.75rem;font-weight:600;border-radius:4px;margin-bottom:8px;text-align:center">Fixed Header (z-index: 999)</div>
+              <div style="position:relative;height:120px">
+                <div style="position:absolute;top:5px;left:5px;width:100px;height:60px;background:rgba(78,84,200,0.6);border-radius:4px;z-index:1;display:flex;align-items:center;justify-content:center;font-size:0.7rem;font-weight:600;color:#fff">z-index: 1</div>
+                <div style="position:absolute;top:25px;left:40px;width:100px;height:60px;background:rgba(17,153,142,0.6);border-radius:4px;z-index:2;display:flex;align-items:center;justify-content:center;font-size:0.7rem;font-weight:600;color:#fff">z-index: 2</div>
+                <div style="position:absolute;top:45px;left:75px;width:100px;height:60px;background:rgba(247,151,30,0.6);border-radius:4px;z-index:3;display:flex;align-items:center;justify-content:center;font-size:0.7rem;font-weight:600;color:#fff">z-index: 3</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="task-card card">
+          <div class="card-header"><span class="task-num js-bg">45</span>Overlapping Gallery <span class="badge-done float-end">Completed</span></div>
+          <div class="card-body">
+            <p>3 overlapping images (position: absolute, z-index: 1-3). Click to bring to front.</p>
+            <div class="demo-box">
+              <div style="position:relative;height:130px">
+                <div class="overlap-img" style="position:absolute;top:5px;left:5px;width:100px;height:70px;background:#e44d26;border-radius:6px;z-index:1;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:600;font-size:0.75rem;cursor:pointer;transition:all 0.2s">Image 1</div>
+                <div class="overlap-img" style="position:absolute;top:25px;left:50px;width:100px;height:70px;background:#264de4;border-radius:6px;z-index:2;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:600;font-size:0.75rem;cursor:pointer;transition:all 0.2s">Image 2</div>
+                <div class="overlap-img" style="position:absolute;top:45px;left:95px;width:100px;height:70px;background:#f0db4f;border-radius:6px;z-index:3;display:flex;align-items:center;justify-content:center;color:#333;font-weight:600;font-size:0.75rem;cursor:pointer;transition:all 0.2s">Image 3</div>
+              </div>
+              <small class="text-muted">Click any image to bring it to front</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="d-flex justify-content-between align-items-center my-5">
+      <a href="index.html" class="page-nav-btn">&larr; HTML Tasks (1&ndash;14)</a>
+      <a href="page2.html" class="page-nav-btn">&larr; CSS &amp; Forms (15&ndash;27)</a>
+    </div>
+
+  </div>
+
+  <div class="modal fade" id="loginModal" tabindex="-1"><div class="modal-dialog modal-dialog-centered"><div class="modal-content"><div class="modal-header"><h5 class="modal-title">Login</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><input class="form-control mb-2" placeholder="Email"><input class="form-control mb-2" type="password" placeholder="Password"><button class="btn btn-primary w-100">Login</button></div></div></div></div>
+  <div class="modal fade" id="signupModal" tabindex="-1"><div class="modal-dialog modal-dialog-centered"><div class="modal-content"><div class="modal-header"><h5 class="modal-title">Sign Up</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><input class="form-control mb-2" placeholder="Full Name"><input class="form-control mb-2" type="email" placeholder="Email"><input class="form-control mb-2" type="password" placeholder="Password"><button class="btn btn-success w-100">Create Account</button></div></div></div></div>
+  <div class="modal fade" id="confirmModal" tabindex="-1"><div class="modal-dialog modal-dialog-centered modal-sm"><div class="modal-content"><div class="modal-header"><h5 class="modal-title">Confirm</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body text-center"><p>Are you sure?</p><button class="btn btn-danger btn-sm me-2" data-bs-dismiss="modal">Yes</button><button class="btn btn-secondary btn-sm" data-bs-dismiss="modal">No</button></div></div></div></div>
+
+  <footer>
+    <div class="container">
+      <div>&lt;<span style="color:#7c6fe0">IK</span>/&gt; <strong style="color:#ccc">Ishaan Kapil</strong> &mdash; 3rd Year CSE student &mdash; Web Programming &mdash; 2025</div>
+      <div class="footer-links">
+        <a href="index.html">&#128196; HTML Tasks</a>
+        <a href="page2.html">&#127912; CSS &amp; Forms</a>
+        <a href="page3.html">&#9889; JavaScript</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
+
+
